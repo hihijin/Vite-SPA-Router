@@ -144,11 +144,13 @@ export const Route = ({ path, component }: RouteProps) => {
 ```
 >url의 변경 여부는 window.location.pathname의 변화 여부로 알 수 있다. 참고로 window.location.pathname으로도 url을 변경할 수 있다. 하지만 이렇게 변경을 하면 새로고침이 일어난다.
 >
->새로고침이 일어나지 않고 컴포넌트를 변경하기 위해서는 history.pushState를 사용해야한다. pushState는 url을 변경하지만 새로고침은 일어나지 않는다. 그래서 위의 코드는 조건문을 사용하여 pathname을 살펴보고 일치하는 url에 대해서 컴포넌트를 랜더링하는 방식으로 SPA를 구현하고 있다.
+>새로고침이 일어나지 않고 컴포넌트를 변경하기 위해서는 history.pushState를 사용해야한다. pushState는 url을 변경하지만 새로고침은 일어나지 않는다. 
+pathname을 살펴보고 일치하는 url에 대해서 컴포넌트를 랜더링하는 방식으로 SPA를 구현하고 있다.
 
 
 ### 4. useRouter 커스텀 Hook은 push 함수를 반환하는데, 이를 사용하여 버튼 클릭 시 다른 페이지로 이동할 수 있습니다.
 ```ts
+//useRouter.tsx
 export const useRouter = () => {
   const push = (path: string) => {
     window.history.pushState({}, "", path);
